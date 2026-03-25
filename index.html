@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="tg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ХАБАР ✨</title>
+  <title>ХАБАР 📰</title>
   <link href="https://fonts.googleapis.com" rel="stylesheet">
   <style>
     body { margin: 0; padding: 20px; font-family: 'Montserrat', sans-serif; background: #f4f7f6; }
@@ -22,13 +22,7 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;
     }
     .news-card:hover { transform: translateY(-10px); }
-    
-    /* СТИЛЬ ДЛЯ КАРТИНКИ */
-    .news-image { 
-      width: 100%; height: 200px; object-fit: cover; 
-      background: #ddd; /* Цвет пока картинка грузится */
-    }
-
+    .news-image { width: 100%; height: 200px; object-fit: cover; }
     .news-content { padding: 20px; }
     .news-card h2 { margin: 0 0 10px; font-size: 1.3rem; color: #1e3c72; }
     .news-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
@@ -45,17 +39,15 @@
   <div class="news-container" id="news-list"></div>
 
   <script>
-    // 1. Наш «склад» с новостями (обязательно заполни его!)
+    // ВОТ ЗДЕСЬ ТВОИ НОВОСТИ:
     const newsData =;
 
-    // 2. Находим место на странице, куда вставлять новости
     const container = document.getElementById('news-list');
 
-    // 3. Команда «рисуй новости на экране»
     newsData.forEach(item => {
       container.innerHTML += `
         <div class="news-card">
-          <img src="${item.image}" class="news-image" alt="хабар">
+          <img src="${item.image}" class="news-image" alt="картинка">
           <div class="news-content">
             <div class="date">${item.date}</div>
             <h2>${item.title}</h2>
@@ -65,3 +57,5 @@
       `;
     });
   </script>
+</body>
+</html>
