@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой Дизайнерский Сайт ✨</title>
+  
+  <!-- Подключаем современный шрифт Montserrat -->
+  <link href="https://fonts.googleapis.com" rel="stylesheet">
+
+  <style>
+    /* 1. Настройка фона всего сайта */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      /* Красивый градиент: от фиолетового к синему */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      overflow: hidden;
+    }
+
+    /* 2. Стеклянная карточка (Glassmorphism) */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px); /* Размытие фона под карточкой */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      text-align: center;
+    }
+
+    h1 { font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; }
+
+    /* 3. Огромный красивый счетчик */
+    #counter-display {
+      font-size: 100px;
+      font-weight: 700;
+      margin: 20px 0;
+      text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* 4. Дизайнерская кнопка */
+    .magic-button {
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #764ba2;
+      background: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease; /* Плавность для всего */
+    }
+
+    /* Эффект при наведении */
+    .magic-button:hover {
+      transform: translateY(-5px) scale(1.05); /* Подпрыгивает вверх */
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      background: #f0f0f0;
+    }
+
+    /* Эффект при клике */
+    .magic-button:active { transform: scale(0.95); }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h1>Клик-Мастер 🚀</h1>
+    <div id="counter-display">0</div>
+    <button class="magic-button" onclick="handleClick()">ЗАРЯДИТЬ!</button>
+  </div>
+
+  <script>
+    let count = parseInt(localStorage.getItem('myCount')) || 0;
+    document.getElementById('counter-display').innerText = count;
+
+    function handleClick() {
+      count++;
+      document.getElementById('counter-display').innerText = count;
+      localStorage.setItem('myCount', count);
+      
+      // Добавим маленькую вибрацию кнопке при клике (только на телефонах)
+      if (window.navigator.vibrate) window.navigator.vibrate(50);
+    }
+  </script>
+
+</body>
+</html>
