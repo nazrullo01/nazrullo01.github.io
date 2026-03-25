@@ -44,18 +44,18 @@
 
   <div class="news-container" id="news-list"></div>
 
-     <script>
-    // 1. Создаем список новостей (БАЗА ДАННЫХ)
+  <script>
+    // 1. Наш «склад» с новостями (обязательно заполни его!)
     const newsData =;
 
-    // 2. Находим контейнер на странице
+    // 2. Находим место на странице, куда вставлять новости
     const container = document.getElementById('news-list');
 
-    // 3. Рисуем новости из списка на экране
+    // 3. Команда «рисуй новости на экране»
     newsData.forEach(item => {
       container.innerHTML += `
         <div class="news-card">
-          <img src="${item.image}" class="news-image" alt="картинка">
+          <img src="${item.image}" class="news-image" alt="хабар">
           <div class="news-content">
             <div class="date">${item.date}</div>
             <h2>${item.title}</h2>
@@ -65,4 +65,3 @@
       `;
     });
   </script>
-
