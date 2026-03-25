@@ -3,89 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nazr News — Новости Технологий 📰</title>
+  <title>Nazr News ✨</title>
   <link href="https://fonts.googleapis.com" rel="stylesheet">
   <style>
-    body {
-      margin: 0; padding: 20px;
-      font-family: 'Montserrat', sans-serif;
-      background: #f0f2f5; color: #333;
+    body { margin: 0; padding: 20px; font-family: 'Montserrat', sans-serif; background: #f4f7f6; }
+    header { 
+      text-align: center; padding: 40px; 
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
+      color: white; border-radius: 15px; margin-bottom: 30px;
+    }
+    .news-container { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 25px; max-width: 1200px; margin: 0 auto; 
+    }
+    .news-card { 
+      background: white; border-radius: 15px; overflow: hidden; 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;
+    }
+    .news-card:hover { transform: translateY(-10px); }
+    
+    /* СТИЛЬ ДЛЯ КАРТИНКИ */
+    .news-image { 
+      width: 100%; height: 200px; object-fit: cover; 
+      background: #ddd; /* Цвет пока картинка грузится */
     }
 
-    header {
-      text-align: center; padding: 40px 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white; border-radius: 20px; margin-bottom: 30px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    /* Сетка для новостей */
-    .news-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; max-width: 1200px; margin: 0 auto;
-    }
-
-    /* Стиль карточки новости */
-    .news-card {
-      background: white; padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-      border-bottom: 4px solid #764ba2;
-    }
-
-    .news-card:hover { transform: translateY(-5px); }
-    .news-card h2 { font-size: 1.2rem; margin-top: 0; color: #764ba2; }
-    .news-card p { font-size: 0.9rem; line-height: 1.5; color: #666; }
-    .news-card .date { font-size: 0.8rem; color: #999; }
+    .news-content { padding: 20px; }
+    .news-card h2 { margin: 0 0 10px; font-size: 1.3rem; color: #1e3c72; }
+    .news-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
+    .date { font-size: 0.8rem; color: #aaa; margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Nazr News 🚀</h1>
-    <p>Самые свежие новости из мира IT и программирования</p>
+    <h1>Nazr News 📰</h1>
+    <p>Главные события из мира IT и жизни Назрулло</p>
   </header>
 
-  <div class="news-container" id="news-list">
-    <!-- Новости появятся здесь автоматически -->
-  </div>
+  <div class="news-container" id="news-list"></div>
 
   <script>
-    // Список наших новостей (это база данных)
-    const newsData = [
-      {
-        title: "Хабархои имруз!",
-        description: "Назрулло официально запустил свой первый веб-проект. Это только начало!",
-        date: "25 марта 2026"
-      },
-      {
-        title: "JavaScript захватывает мир",
-        description: "Почему этот язык программирования остается самым популярным в 2026 году и зачем его учить.",
-        date: "24 марта 2026"
-      },
-      {
-        title: "Искусственный интеллект пишет код",
-        description: "Нейросети теперь помогают программистам работать в 2 раза быстрее. Будущее уже наступило.",
-        date: "23 марта 2026"
-      }
-    ];
+    const newsData =;
 
-    // Функция, которая «рисует» новости на экране
     const container = document.getElementById('news-list');
 
     newsData.forEach(item => {
-      const card = `
+      container.innerHTML += `
         <div class="news-card">
-          <div class="date">${item.date}</div>
-          <h2>${item.title}</h2>
-          <p>${item.description}</p>
+          <img src="${item.image}" class="news-image" alt="Новость">
+          <div class="news-content">
+            <div class="date">${item.date}</div>
+            <h2>${item.title}</h2>
+            <p>${item.description}</p>
+          </div>
         </div>
       `;
-      container.innerHTML += card;
     });
   </script>
-
 </body>
 </html>
