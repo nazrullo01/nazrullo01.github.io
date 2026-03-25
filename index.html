@@ -44,17 +44,18 @@
 
   <div class="news-container" id="news-list"></div>
 
-      <script>
-    // Вот здесь мы создаём список новостей с картинками
+     <script>
+    // 1. Создаем список новостей (БАЗА ДАННЫХ)
     const newsData =;
 
+    // 2. Находим контейнер на странице
     const container = document.getElementById('news-list');
 
-    // Этот цикл берет данные из списка выше и рисует их на сайте
+    // 3. Рисуем новости из списка на экране
     newsData.forEach(item => {
       container.innerHTML += `
         <div class="news-card">
-          <img src="${item.image}" https://i0.wp.com/comnet-msp.com/wp-content/uploads/2020/11/it-news.jpg?resize=1600%2C766&ssl=1">
+          <img src="${item.image}" class="news-image" alt="картинка">
           <div class="news-content">
             <div class="date">${item.date}</div>
             <h2>${item.title}</h2>
@@ -64,3 +65,4 @@
       `;
     });
   </script>
+
