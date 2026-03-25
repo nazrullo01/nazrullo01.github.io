@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nazr News ✨</title>
+  <title>ХАБАР ✨</title>
   <link href="https://fonts.googleapis.com" rel="stylesheet">
   <style>
     body { margin: 0; padding: 20px; font-family: 'Montserrat', sans-serif; background: #f4f7f6; }
@@ -38,21 +38,23 @@
 <body>
 
   <header>
-    <h1>Nazr News 📰</h1>
-    <p>Главные события из мира IT и жизни Назрулло</p>
+    <h1>ХАБАР 📰</h1>
+    <p>ХАБАРХОИ ЧАХОНИ IT</p>
   </header>
 
   <div class="news-container" id="news-list"></div>
 
-  <script>
+    <script>
+    // Вот здесь мы создаём список новостей с картинками
     const newsData =;
 
     const container = document.getElementById('news-list');
 
+    // Этот цикл берет данные из списка выше и рисует их на сайте
     newsData.forEach(item => {
       container.innerHTML += `
         <div class="news-card">
-          <img src="${item.image}" class="news-image" alt="Новость">
+          <img src="${item.image}" class="news-image" alt="картинка">
           <div class="news-content">
             <div class="date">${item.date}</div>
             <h2>${item.title}</h2>
@@ -62,5 +64,3 @@
       `;
     });
   </script>
-</body>
-</html>
