@@ -54,7 +54,27 @@
     newsData.forEach(item => {
       container.innerHTML += `
         <div class="news-card">
+          <img src="${item.image}"   <script>
+    // Вот здесь мы создаём список новостей с картинками
+    const newsData =;
+
+    const container = document.getElementById('news-list');
+
+    // Этот цикл берет данные из списка выше и рисует их на сайте
+    newsData.forEach(item => {
+      container.innerHTML += `
+        <div class="news-card">
           <img src="${item.image}" class="news-image" alt="картинка">
+          <div class="news-content">
+            <div class="date">${item.date}</div>
+            <h2>${item.title}</h2>
+            <p>${item.description}</p>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+" alt="картинка">
           <div class="news-content">
             <div class="date">${item.date}</div>
             <h2>${item.title}</h2>
