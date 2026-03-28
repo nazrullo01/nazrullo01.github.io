@@ -1,61 +1,255 @@
 <!DOCTYPE html>
-<html lang="tg">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ХАБАР 📰</title>
-  <link href="https://fonts.googleapis.com" rel="stylesheet">
-  <style>
-    body { margin: 0; padding: 20px; font-family: 'Montserrat', sans-serif; background: #f4f7f6; }
-    header { 
-      text-align: center; padding: 40px; 
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
-      color: white; border-radius: 15px; margin-bottom: 30px;
-    }
-    .news-container { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 25px; max-width: 1200px; margin: 0 auto; 
-    }
-    .news-card { 
-      background: white; border-radius: 15px; overflow: hidden; 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;
-    }
-    .news-card:hover { transform: translateY(-10px); }
-    .news-image { width: 100%; height: 200px; object-fit: cover; }
-    .news-content { padding: 20px; }
-    .news-card h2 { margin: 0 0 10px; font-size: 1.3rem; color: #1e3c72; }
-    .news-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
-    .date { font-size: 0.8rem; color: #aaa; margin-bottom: 10px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Новостной Портал</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --text-muted: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+        }
+
+        /* Основная сетка */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .news-card:hover { transform: translateY(-10px); }
+
+        .news-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .news-content { padding: 25px; }
+
+        /* СТИЛЬНОЕ ПРОДОЛЖЕНИЕ ВНИЗУ */
+        .section-title {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: #ddd;
+        }
+
+        .horizontal-news {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .h-card {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        .h-card:hover { background: #f9f9f9; }
+
+        .h-card img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .h-info { padding: 15px 20px; }
+
+        /* Кнопка "Загрузить еще" */
+        .load-more-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .btn-load {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        .btn-load:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>ХАБАР 📰</h1>
-    <p>ХАБАРХОИ ЧАХОНИ IT</p>
-  </header>
+<header>
+    <h1 style="margin:0; font-size: 3rem; letter-spacing: 2px;">NEWS FEED</h1>
+    <p>Ваш ежедневный источник вдохновения</p>
+</header>
 
-  <div class="news-container" id="news-list"></div>
-
-  <script>
-    // ВОТ ЗДЕСЬ ТВОИ НОВОСТИ:
-    const newsData =;
-
-    const container = document.getElementById('news-list');
-
-    newsData.forEach(item => {
-      container.innerHTML += `
+<div class="container">
+    <!-- Основные новости -->
+    <div class="news-grid">
         <div class="news-card">
-          <img src="${item.image}" class="news-image" alt="картинка">
-          <div class="news-content">
-            <div class="date">${item.date}</div>
-            <h2>${item.title}</h2>
-            <p>${item.description}</p>
-          </div>
+            <a href="#"><img src="https://picsum.photos" class="news-image"></a>
+            <div class="news-content">
+                <h2 class="news-title">Технологии будущего</h2>
+                <p>Как квантовые компьютеры изменят мир в ближайшее десятилетие.</p>
+            </div>
         </div>
-      `;
-    });
-  </script>
+        <div class="news-card">
+            <a href="#"><img src="https://picsum.photos" class="news-image"></a>
+            <div class="news-content">
+                <h2 class="news-title">Минимализм в дизайне</h2>
+                <p>Почему меньше — значит больше в современном искусстве.</p>
+            </div>
+        </div>
+    </div>
+
+     <!-- Основные новости -->
+    <div class="news-grid">
+        <div class="news-card">
+            <a href="#"><img src="https://picsum.photos" class="news-image"></a>
+            <div class="news-content">
+                <h2 class="news-title">Технологии будущего</h2>
+                <p>Как квантовые компьютеры изменят мир в ближайшее десятилетие.</p>
+            </div>
+        </div>
+        
+    </div>
+    <!-- СТИЛЬНАЯ СЕКЦИЯ ВНИЗУ -->
+    <h2 class="section-title">ЧИТАЙТЕ ТАКЖЕ</h2>
+    
+    <div class="horizontal-news">
+        <a href="#" class="h-card">
+            <img src="https://picsum.photos" alt="">
+            <div class="h-info">
+                <h3>Путешествия без границ</h3>
+                <p>Лучшие скрытые места Европы, о которых мало кто знает...</p>
+                <small style="color:var(--accent)">5 мин назад</small>
+            </div>
+        </a>
+
+        <a href="#" class="h-card">
+            <img src="https://picsum.photos" alt="">
+            <div class="h-info">
+                <h3>Гастрономический гид</h3>
+                <p>Секреты приготовления идеального завтрака от шеф-повара.</p>
+                <small style="color:var(--accent)">1 час назад</small>
+            </div>
+        </a>
+    </div>
+
+    <!-- Основные новости -->
+    <div class="news-grid">
+        <div class="news-card">
+            <a href="#"><img src="https://picsum.photos" class="news-image"></a>
+            <div class="news-content">
+                <h2 class="news-title">Технологии будущего</h2>
+                <p>Как квантовые компьютеры изменят мир в ближайшее десятилетие.</p>
+            </div>
+        </div>
+        <div class="news-card">
+            <a href="#"><img src="https://picsum.photos" class="news-image"></a>
+            <div class="news-content">
+                <h2 class="news-title">Минимализм в дизайне</h2>
+                <p>Почему меньше — значит больше в современном искусстве.</p>
+            </div>
+        </div>
+    </div>
+    <h2 class="section-title">ЧИТАЙТЕ ТАКЖЕ</h2>
+    
+    <div class="horizontal-news">
+        <a href="#" class="h-card">
+            <img src="https://picsum.photos" alt="">
+            <div class="h-info">
+                <h3>Путешествия без границ</h3>
+                <p>Лучшие скрытые места Европы, о которых мало кто знает...</p>
+                <small style="color:var(--accent)">5 мин назад</small>
+            </div>
+        </a>
+
+        <a href="#" class="h-card">
+            <img src="https://picsum.photos" alt="">
+            <div class="h-info">
+                <h3>Гастрономический гид</h3>
+                <p>Секреты приготовления идеального завтрака от шеф-повара.</p>
+                <small style="color:var(--accent)">1 час назад</small>
+            </div>
+        </a>
+    </div>
+    <!-- Кнопка продолжения -->
+    <div class="load-more-container">
+        <button class="btn-load">ЗАГРУЗИТЬ БОЛЬШЕ НОВОСТЕЙ</button>
+    </div>
+</div>
+
+<footer>
+    <div class="social-links">
+        <a href="#">Telegram</a> | <a href="#">VKontakte</a> | <a href="#">YouTube</a>
+    </div>
+    <p style="margin-top:20px;">&copy; 2026 Мой Новостной Портал. Сделано с любовью.</p>
+</footer>
+
 </body>
 </html>
